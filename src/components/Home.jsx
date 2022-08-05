@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { getCategories } from '../services/api';
+import { getCategories, getProductsFromCategoryAndQuery } from '../services/api';
+import Product from './Product';
 
 export default class Home extends Component {
     state = {
       item: [],
       categories: [],
+      inputProduct: '',
     }
 
     async componentDidMount() {
@@ -15,8 +17,19 @@ export default class Home extends Component {
       });
     }
 
+    handleChange = ({ target }) => {
+      const { name, value } = target;
+      this.setState({ [name]: value });
+    }
+
+    handleClick = async () => {
+      const { inputProduct } = this.state;
+      const response = await getProductsFromCategoryAndQuery('', inputProduct);
+      this.setState({ item: response.results });
+    }
+
     render() {
-      const { item, categories } = this.state;
+      const { item, inputProduct, categories } = this.state;
       return (
         <section>
           <div>
@@ -33,13 +46,38 @@ export default class Home extends Component {
           </section>
           <form>
             <label htmlFor="home">
-              <input type="text" id="home" />
+              <input
+                type="text"
+                id="home"
+                data-testid="query-input"
+                onChange={ this.handleChange }
+                name="inputProduct"
+                value={ inputProduct }
+              />
             </label>
+            <button
+              type="button"
+              onClick={ this.handleClick }
+              data-testid="query-button"
+            >
+              Pesquisar
+            </button>
           </form>
           { !item.length && (
             <p data-testid="home-initial-message">
               Digite algum termo de pesquisa ou escolha uma categoria.
             </p>)}
+          {!item.length ? <p>Nenhum produto foi encontrado</p>
+            : (
+              item.length && (
+                item.map((product) => (
+                  <Product
+                    data-testid="product"
+                    key={ product.id }
+                    product={ product }
+                  />
+                )))
+            )}
         </section>
       );
     }
