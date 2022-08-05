@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { getCategories, getProductsFromCategoryAndQuery } from '../services/api';
+import {
+  getCategories,
+  getProductsFromCategory,
+  getProductsFromCategoryAndQuery,
+} from '../services/api';
 import Product from './Product';
 
 export default class Home extends Component {
@@ -28,6 +32,16 @@ export default class Home extends Component {
       this.setState({ item: response.results });
     }
 
+    handleSelect = async ({ target }) => {
+      const { value } = target;
+      const { categories } = this.state;
+      const category = categories.filter((cat) => cat.name === value);
+      const response = await getProductsFromCategory(category[0].id);
+      this.setState({
+        item: response.results,
+      });
+    }
+
     render() {
       const { item, inputProduct, categories } = this.state;
       return (
@@ -36,13 +50,18 @@ export default class Home extends Component {
             <Link to="/cart" data-testid="shopping-cart-button">Cart</Link>
           </div>
           <section>
-            <select name="category">
-              { categories.map(({ id, name }) => (
-                <option name="category" key={ id } data-testid="category">
-                  {name}
-                </option>
-              ))}
-            </select>
+            { categories.map(({ id, name }) => (
+              <label htmlFor={ id } key={ id } data-testid="category">
+                <input
+                  id={ id }
+                  value={ name }
+                  name="category"
+                  type="radio"
+                  onChange={ this.handleSelect }
+                />
+                { name }
+              </label>
+            ))}
           </section>
           <form>
             <label htmlFor="home">
