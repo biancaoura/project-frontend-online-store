@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 export default class Home extends Component {
     state = {
@@ -9,6 +10,9 @@ export default class Home extends Component {
       const { item } = this.state;
       return (
         <section>
+          <div>
+            <Link to="/cart" data-testid="shopping-cart-button">Cart</Link>
+          </div>
           <form>
             <label htmlFor="home">
               <input type="text" id="home" />
