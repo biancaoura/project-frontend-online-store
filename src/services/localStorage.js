@@ -1,59 +1,25 @@
-const key = 'cartItems';
+const CART_ITEMS_KEY = 'cart_items';
 
-if (!JSON.parse(localStorage.getItem(key))) {
-  localStorage.setItem(key, JSON.stringify([]));
-}
-
-const readLocal = () => localStorage.getItem(key);
-const setLocal = (cart) => localStorage
-  .setItem(key, JSON.stringify(cart));
-
-export default function setToLocal(obj) {
-  if (obj) {
-    const oldLocal = readLocal();
-    setLocal([...oldLocal, obj]);
+const readCartItems = () => {
+  if (!JSON.parse(localStorage.getItem(CART_ITEMS_KEY))) {
+    localStorage.setItem(CART_ITEMS_KEY, JSON.stringify([]));
   }
-}
+  return JSON.parse(localStorage.getItem(CART_ITEMS_KEY));
+};
 
-// const FAVORITE_SONGS_KEY = 'favorite_songs';
-// const TIMEOUT = 500;
-// const SUCCESS_STATUS = 'OK';
+const saveCartItems = (cartItems) => localStorage
+  .setItem(CART_ITEMS_KEY, JSON.stringify(cartItems));
 
-// if (!JSON.parse(localStorage.getItem(FAVORITE_SONGS_KEY))) {
-//   localStorage.setItem(FAVORITE_SONGS_KEY, JSON.stringify([]));
-// }
-// const readFavoriteSongs = () => JSON.parse(localStorage.getItem(FAVORITE_SONGS_KEY));
+export const getSavedCart = () => readCartItems();
 
-// const saveFavoriteSongs = (favoriteSongs) => localStorage
-//   .setItem(FAVORITE_SONGS_KEY, JSON.stringify(favoriteSongs));
+export const addToCart = (item) => {
+  if (item) {
+    const cartItems = readCartItems();
+    saveCartItems([...new Set([...cartItems, item])]);
+  }
+};
 
-// // --------------------------------------------------------------------
-// // A função simulateRequest simula uma requisição para uma API externa
-// // Esse tipo de função que "chama outra função" é chamada de
-// // "currying function" https://javascript.info/currying-partials
-// // não se preocupe, estudaremos isso futuramente.
-// // --------------------------------------------------------------------
-
-// const simulateRequest = (response) => (callback) => {
-//   setTimeout(() => {
-//     callback(response);
-//   }, TIMEOUT);
-// };
-
-// export const getFavoriteSongs = () => new Promise((resolve) => {
-//   const favoriteSongs = readFavoriteSongs();
-//   simulateRequest(favoriteSongs)(resolve);
-// });
-
-// export const addSong = (song) => new Promise((resolve) => {
-//   if (song) {
-//     const favoriteSongs = readFavoriteSongs();
-//     saveFavoriteSongs([...favoriteSongs, song]);
-//   }
-//   simulateRequest(SUCCESS_STATUS)(resolve);
-// });
-
-// export const removeSong = (song) => {
-//   const favoriteSongs = readFavoriteSongs();
-//   saveFavoriteSongs(favoriteSongs.filter((s) => s.trackId !== song.trackId));
-// };
+export const removeCartItems = (item) => {
+  const cartItems = readCartItems();
+  saveCartItems(cartItems.filter((s) => s.id !== item.id));
+};

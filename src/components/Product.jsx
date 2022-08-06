@@ -1,7 +1,8 @@
 import { shape } from 'prop-types';
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import setToLocal from '../services/localStorage';
+import { addToCart } from '../services/localStorage';
+// import setToLocal from '../services/localStorage';
 
 export default class Product extends Component {
   handleClick = () => {
@@ -9,7 +10,7 @@ export default class Product extends Component {
     const productObj = {
       ...product,
     };
-    setToLocal(productObj);
+    addToCart(productObj);
   }
 
   render() {

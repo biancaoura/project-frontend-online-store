@@ -1,3 +1,4 @@
+// import { func } from 'prop-types';
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import {
@@ -5,6 +6,7 @@ import {
   getProductsFromCategory,
   getProductsFromCategoryAndQuery,
 } from '../services/api';
+import { getSavedCart } from '../services/localStorage';
 import Product from './Product';
 
 export default class Home extends Component {
@@ -12,21 +14,29 @@ export default class Home extends Component {
       item: [],
       categories: [],
       inputProduct: '',
+      cart: [],
     }
 
     async componentDidMount() {
       const response = await getCategories();
+      const cartItems = getSavedCart();
       this.setState({
         categories: response,
+        cart: cartItems,
       });
     }
+
+    // componentDidUpdate() {
+    //   this.componentDidMount();
+    //   console.log('uma palavra');
+    // }
 
     handleChange = ({ target }) => {
       const { name, value } = target;
       this.setState({ [name]: value });
     }
 
-    handleClick = async () => {
+    handleClickButton = async () => {
       const { inputProduct } = this.state;
       const response = await getProductsFromCategoryAndQuery('', inputProduct);
       this.setState({ item: response.results });
@@ -43,11 +53,17 @@ export default class Home extends Component {
     }
 
     render() {
-      const { item, inputProduct, categories } = this.state;
+      const { item, inputProduct, categories, cart } = this.state;
       return (
         <section>
           <div>
-            <Link to="/cart" data-testid="shopping-cart-button">Cart</Link>
+            <Link
+              to="/cart/:id"
+              data-testid="shopping-cart-button"
+            >
+              <p data-testid="shopping-cart-product-quantity">{ cart.length }</p>
+              Cart
+            </Link>
           </div>
           <section>
             { categories.map(({ id, name }) => (
@@ -76,7 +92,7 @@ export default class Home extends Component {
             </label>
             <button
               type="button"
-              onClick={ this.handleClick }
+              onClick={ this.handleClickButton }
               data-testid="query-button"
             >
               Pesquisar
@@ -101,3 +117,7 @@ export default class Home extends Component {
       );
     }
 }
+
+// Home.propTypes = {
+//   handleClick: func.isRequired,
+// };
