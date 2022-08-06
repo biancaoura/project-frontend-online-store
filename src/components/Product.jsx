@@ -1,8 +1,18 @@
 import { shape } from 'prop-types';
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { addToCart } from '../services/localStorage';
+// import setToLocal from '../services/localStorage';
 
 export default class Product extends Component {
+  handleClick = () => {
+    const { product } = this.props;
+    const productObj = {
+      ...product,
+    };
+    addToCart(productObj);
+  }
+
   render() {
     const { product } = this.props;
     const { title, thumbnail, price, id } = product;
@@ -18,6 +28,14 @@ export default class Product extends Component {
           Mais detalhes
 
         </Link>
+        <button
+          data-testid="product-add-to-cart"
+          type="button"
+          onClick={ this.handleClick }
+        >
+          Adicionar ao carrinho
+
+        </button>
       </div>
     );
   }
