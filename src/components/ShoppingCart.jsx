@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
-import { getSavedCart } from '../services/localStorage';
+import {
+  addToCart,
+  getSavedCart,
+  removeCartItems,
+  removeOneItem } from '../services/localStorage';
 import CartCard from './CartCard';
 
 export default class ShoppingCart extends Component {
@@ -23,21 +27,66 @@ export default class ShoppingCart extends Component {
     });
   }
 
+  handleIncrease = (product) => {
+    const obj = {
+      ...product,
+    };
+    addToCart(obj);
+    const cartItems = getSavedCart();
+    console.log(cartItems);
+    const cartfilterSmall = cartItems
+      .filter((item, index, array) => index === array
+        .findIndex((objt) => objt.id === item.id));
+    this.setState({ cart: cartItems, cartFiltered: cartfilterSmall });
+  }
+
+  handleDecrease = (product) => {
+    const obj = {
+      ...product,
+    };
+    removeOneItem(obj);
+    const cartItems = getSavedCart();
+    console.log(cartItems);
+    const cartfilterSmall = cartItems
+      .filter((item, index, array) => index === array
+        .findIndex((objt) => objt.id === item.id));
+    this.setState({ cart: cartItems, cartFiltered: cartfilterSmall });
+  }
+
+  removeCartItem = (product) => {
+    const obj = {
+      ...product,
+    };
+    removeCartItems(obj);
+    const cartItems = getSavedCart();
+    const cartfilterSmall = cartItems
+      .filter((item, index, array) => index === array
+        .findIndex((objt) => objt.id === item.id));
+    console.log(cartfilterSmall);
+    this.setState({ cart: cartItems, cartFiltered: cartfilterSmall });
+  }
+
   render() {
     const { cart, cartFiltered } = this.state;
     return (
       <div>
-        <p
+        {/* <p
           data-testid="shopping-cart-product-quantity"
         >
           { cart.length }
-
-        </p>
-        {!cart.length && (
+        </p> */}
+        {cart.length === 0 && (
           <p data-testid="shopping-cart-empty-message">Seu carrinho está vazio</p>)}
-        {cart.length && (
+        {cart.length > 0 && (
           cartFiltered.map((item, index) => (
-            <CartCard key={ index } item={ item } items={ cart } />
+            <CartCard
+              key={ index }
+              item={ item }
+              items={ cart }
+              handleIncrease={ this.handleIncrease }
+              removeCartItem={ this.removeCartItem }
+              handleDecrease={ this.handleDecrease }
+            />
           ))
         )}
       </div>

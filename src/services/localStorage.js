@@ -23,3 +23,10 @@ export const removeCartItems = (item) => {
   const cartItems = readCartItems();
   saveCartItems(cartItems.filter((s) => s.id !== item.id));
 };
+
+export const removeOneItem = (item) => {
+  const cartItems = readCartItems();
+  saveCartItems(cartItems
+    .filter((element, index, array) => index !== array
+      .findIndex((obj) => obj.id === item.id)));
+};
