@@ -37,7 +37,7 @@ export default class ShoppingCart extends Component {
           <p data-testid="shopping-cart-empty-message">Seu carrinho está vazio</p>)}
         {cart.length && (
           cartFiltered.map((item, index) => (
-            <CartCard key={ index } { ...item } items={ cart } />
+            <CartCard key={ index } item={ item } items={ cart } />
           ))
         )}
       </div>

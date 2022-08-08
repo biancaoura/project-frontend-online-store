@@ -1,19 +1,37 @@
-import { arrayOf, number, shape, string } from 'prop-types';
+import { arrayOf, shape, string } from 'prop-types';
 import React, { Component } from 'react';
+import { addToCart } from '../services/localStorage';
 
 export default class CartCard extends Component {
+  removeCartItem = () => {
+    console.log('oi');
+  }
+
+  handleIncrease = (product) => {
+    console.log(product);
+    const productObj = {
+      ...product,
+    };
+    addToCart(productObj);
+  }
+
   render() {
-    const { title, price, thumbnail } = this.props;
-    const { id, items } = this.props;
-    const quantity = items.filter((item) => item.id === id).length;
+    const { id, items, item } = this.props;
+    const { title, price, thumbnail } = item;
+    const quantity = items.filter((element) => element.id === id).length;
     return (
       <div>
         <h3 data-testid="shopping-cart-product-name">{ title }</h3>
-        <span>{quantity}</span>
+        <button type="button" onClick={ this.removeCartItem }>
+          X
+        </button>
         <img
           src={ thumbnail }
           alt={ title }
         />
+        {/* <button type="button" onClick={}>-</button> */}
+        <span>{quantity}</span>
+        <button type="button" onClick={ () => this.handleIncrease(item) }>+</button>
         <span>{ price }</span>
       </div>
     );
@@ -21,9 +39,7 @@ export default class CartCard extends Component {
 }
 
 CartCard.propTypes = {
-  title: string.isRequired,
-  price: number.isRequired,
-  thumbnail: string.isRequired,
+  item: shape.isRequired,
   id: string.isRequired,
   items: arrayOf(shape).isRequired,
 };
