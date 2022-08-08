@@ -47,7 +47,8 @@ export default class ShoppingCart extends Component {
     removeOneItem(obj);
     const cartItems = getSavedCart();
     console.log(cartItems);
-    const cartfilterSmall = cartItems
+    const reversed = cartItems.slice().reverse();
+    const cartfilterSmall = reversed
       .filter((item, index, array) => index === array
         .findIndex((objt) => objt.id === item.id));
     this.setState({ cart: cartItems, cartFiltered: cartfilterSmall });
@@ -70,11 +71,9 @@ export default class ShoppingCart extends Component {
     const { cart, cartFiltered } = this.state;
     return (
       <div>
-        {/* <p
-          data-testid="shopping-cart-product-quantity"
-        >
+        <p>
           { cart.length }
-        </p> */}
+        </p>
         {cart.length === 0 && (
           <p data-testid="shopping-cart-empty-message">Seu carrinho está vazio</p>)}
         {cart.length > 0 && (

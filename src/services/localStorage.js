@@ -26,7 +26,8 @@ export const removeCartItems = (item) => {
 
 export const removeOneItem = (item) => {
   const cartItems = readCartItems();
-  saveCartItems(cartItems
-    .filter((element, index, array) => index !== array
+  const reversed = cartItems.slice().reverse();
+  saveCartItems(reversed
+    .filter((_, index, array) => index !== array
       .findIndex((obj) => obj.id === item.id)));
 };
