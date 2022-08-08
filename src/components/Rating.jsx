@@ -1,37 +1,47 @@
+import { bool, func, string } from 'prop-types';
 import React from 'react';
+// import { addRating } from '../services/localStorageRating';
 import RatingCheck from './RatingCheck';
-import Review from './Review';
+// import Review from './Review';
 
 export default class Rating extends React.Component {
-  state ={
-    email: '',
-    textarea: '',
-    invalid: false,
-    rating: 0,
-  }
+  // state ={
+  //   email: '',
+  //   textarea: '',
+  //   rating: 0,
+  // }
 
   handleChange = ({ target }) => {
     const { name, value } = target;
     this.setState({ [name]: value });
   }
 
-  handleClick = (event) => {
-    event.preventDefault();
-    const { email, rating } = this.state;
-    console.log(email.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,3})$/i));
-    if (!email.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,3})$/i) || rating <= 0) {
-      return this.setState({
-        // email: '',
-        invalid: true,
-        // textarea: '',
-      });
-    }
-    return this.setState({
-      email: '',
-      invalid: false,
-      textarea: '',
-    });
-  }
+  // handleClick = (event) => {
+  //   event.preventDefault();
+  //   const { email, rating, textarea } = this.state;
+  //   const ratingObj = {
+  //     email,
+  //     rating,
+  //     textarea,
+  //   };
+
+  //   if (!email.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,3})$/i) || rating <= 0) {
+  //     return this.setState({
+  //       // email: '',
+  //       // invalid: true,
+  //       // textarea: '',
+  //     });
+  //   }
+  //   addRating(ratingObj);
+  //   return (
+  //     this.setState({
+  //       email: '',
+  //       // invalid: false,
+  //       textarea: '',
+  //       rating: 0,
+  //     })
+  //   );
+  // }
 
   render() {
     const ONE = 1;
@@ -41,8 +51,8 @@ export default class Rating extends React.Component {
     const FIVE = 5;
 
     const arrayNumbers = [ONE, TWO, THREE, FOUR, FIVE];
-
-    const { email, textarea, invalid, rating } = this.state;
+    const { handleClick, invalid, handleChange, email, textarea } = this.props;
+    // const { email, textarea } = this.state;
 
     return (
       <>
@@ -54,14 +64,14 @@ export default class Rating extends React.Component {
             name="email"
             value={ email }
             data-testid="product-detail-email"
-            onChange={ this.handleChange }
+            onChange={ (event) => handleChange(event) }
           />
           <div>
             {arrayNumbers.map((index) => (
               <section key={ index }>
                 <RatingCheck
                   value={ index }
-                  onChange={ this.handleChange }
+                  onChange={ (event) => handleChange(event) }
                 />
               </section>
             ))}
@@ -73,26 +83,35 @@ export default class Rating extends React.Component {
             rows="5"
             placeholder="Mensagem(opcional)"
             data-testid="product-detail-evaluation"
-            onChange={ this.handleChange }
+            onChange={ (event) => handleChange(event) }
           />
           <button
             type="submit"
             data-testid="submit-review-btn"
-            onClick={ this.handleClick }
+            onClick={ (event) => handleClick(event) }
           >
             Avaliar
 
           </button>
-          {invalid === true && <p data-testid="error-msg">Campos inválidos</p>}
+          {invalid && <p data-testid="error-msg">Campos inválidos</p>}
         </form>
-        { invalid === false
+        {/* { invalid === false
         && <Review
           email={ email }
           textarea={ textarea }
           rating={ rating }
-        />}
+        />} */}
 
       </>
     );
   }
 }
+
+Rating.propTypes = {
+  handleClick: func.isRequired,
+  handleChange: func.isRequired,
+  invalid: bool.isRequired,
+  email: string.isRequired,
+  textarea: string.isRequired,
+  // rating: number.isRequired,
+};

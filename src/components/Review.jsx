@@ -1,21 +1,20 @@
-import { string, number } from 'prop-types';
+import { shape } from 'prop-types';
 import React, { Component } from 'react';
 
 export default class Review extends Component {
   render() {
-    const { email, textarea, rating } = this.props;
+    const { review } = this.props;
+    const { email, textarea, rating } = review;
     return (
       <div>
         <span data-testid="review-card-email">{ email }</span>
-        <span>{ textarea }</span>
-        <span>{ rating }</span>
+        <span data-testid="review-card-rating">{ textarea }</span>
+        <span data-testid="review-card-evaluation">{ rating }</span>
       </div>
     );
   }
 }
 
 Review.propTypes = {
-  email: string.isRequired,
-  textarea: string.isRequired,
-  rating: number.isRequired,
+  review: shape({}).isRequired,
 };
