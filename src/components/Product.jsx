@@ -16,7 +16,6 @@ export default class Product extends Component {
           data-testid="product-detail-link"
         >
           Mais detalhes
-
         </Link>
         <button
           data-testid="product-add-to-cart"
