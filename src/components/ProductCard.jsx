@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { getProductById } from '../services/api';
 import { addToCart } from '../services/localStorage';
+import Rating from './Rating';
 
 export default class ProductCard extends Component {
   state = {
@@ -45,6 +46,7 @@ export default class ProductCard extends Component {
 
         </button>
 
+        <Rating />
       </>
     );
   }
