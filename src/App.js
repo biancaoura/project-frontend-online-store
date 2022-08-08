@@ -5,16 +5,6 @@ import ProductCard from './components/ProductCard';
 import ShoppingCart from './components/ShoppingCart';
 
 class App extends Component {
-  state = {
-    cartItems: [],
-  }
-
-  handleClick = (item) => {
-    this.setState((prevState) => ({
-      cartItems: [...prevState.cartItems, item],
-    }));
-  }
-
   render() {
     return (
       <BrowserRouter>

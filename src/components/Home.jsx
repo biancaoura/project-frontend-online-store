@@ -1,4 +1,3 @@
-// import { func } from 'prop-types';
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import {
@@ -6,7 +5,7 @@ import {
   getProductsFromCategory,
   getProductsFromCategoryAndQuery,
 } from '../services/api';
-import { getSavedCart } from '../services/localStorage';
+import { addToCart, getSavedCart } from '../services/localStorage';
 import Product from './Product';
 
 export default class Home extends Component {
@@ -14,22 +13,15 @@ export default class Home extends Component {
       item: [],
       categories: [],
       inputProduct: '',
-      cart: [],
+      loading: false,
     }
 
     async componentDidMount() {
       const response = await getCategories();
-      const cartItems = getSavedCart();
       this.setState({
         categories: response,
-        cart: cartItems,
       });
     }
-
-    // componentDidUpdate() {
-    //   this.componentDidMount();
-    //   console.log('uma palavra');
-    // }
 
     handleChange = ({ target }) => {
       const { name, value } = target;
@@ -52,8 +44,20 @@ export default class Home extends Component {
       });
     }
 
+    handleClick = (product) => {
+      const productObj = {
+        ...product,
+      };
+      this.setState(({ loading: true }), () => {
+        this.setState({
+          loading: false,
+        });
+      });
+      addToCart(productObj);
+    }
+
     render() {
-      const { item, inputProduct, categories, cart } = this.state;
+      const { item, inputProduct, categories, loading } = this.state;
       return (
         <section>
           <div>
@@ -61,7 +65,15 @@ export default class Home extends Component {
               to="/cart/:id"
               data-testid="shopping-cart-button"
             >
-              <p data-testid="shopping-cart-product-quantity">{ cart.length }</p>
+              {loading ? <span>Carregando...</span>
+                : (
+                  <p
+                    data-testid="shopping-cart-product-quantity"
+                  >
+                    { getSavedCart().length }
+
+                  </p>
+                )}
               Cart
             </Link>
           </div>
@@ -110,6 +122,7 @@ export default class Home extends Component {
                     data-testid="product"
                     key={ product.id }
                     product={ product }
+                    handleClick={ this.handleClick }
                   />
                 )))
             )}
@@ -117,7 +130,3 @@ export default class Home extends Component {
       );
     }
 }
-
-// Home.propTypes = {
-//   handleClick: func.isRequired,
-// };

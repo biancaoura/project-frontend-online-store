@@ -1,44 +1,46 @@
 import React, { Component } from 'react';
-// import { shape } from 'prop-types';
 import { getSavedCart } from '../services/localStorage';
 import CartCard from './CartCard';
-// import { getProductById } from '../services/api';
 
 export default class ShoppingCart extends Component {
   state = {
     cart: [],
+    cartFiltered: [],
   }
 
-  // async componentDidMount() {
-  //   const { match: { params: { id } } } = this.props;
-  //   const response = await getProductById(id);
-  //   this.setState((prevState) => ({
-  //     cart: [...prevState.cart, response],
-  //   }));
-  // }
-
-  componentDidMount() {
+  async componentDidMount() {
     const cartItems = getSavedCart();
-    this.setState({ cart: cartItems });
+    const cartfilterSmall = cartItems
+      .filter((item, index, array) => index === array
+        .findIndex((obj) => obj.id === item.id));
+    // Solução com o fetch, não deve ser usada até que complete 100%
+    // const testFilter = [...new Set(cartItems
+    //   .reduce((acc, { id }) => [...acc, id], []))];
+    // const filter = Promise.all(testFilter
+    //   .map((id) => getProductById(id))).then((values) => values);
+    this.setState({ cart: cartItems }, () => {
+      this.setState({ cartFiltered: cartfilterSmall });
+    });
   }
 
   render() {
-    const { cart } = this.state;
+    const { cart, cartFiltered } = this.state;
     return (
       <div>
-        <p data-testid="shopping-cart-product-quantity">{ cart.length }</p>
+        <p
+          data-testid="shopping-cart-product-quantity"
+        >
+          { cart.length }
+
+        </p>
         {!cart.length && (
           <p data-testid="shopping-cart-empty-message">Seu carrinho está vazio</p>)}
         {cart.length && (
-          cart.map((item) => (
-            <CartCard key={ item.id } { ...item } />
+          cartFiltered.map((item, index) => (
+            <CartCard key={ index } { ...item } items={ cart } />
           ))
         )}
       </div>
     );
   }
 }
-
-// ShoppingCart.propTypes = {
-//   match: shape().isRequired,
-// };

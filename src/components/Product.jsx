@@ -1,20 +1,10 @@
-import { shape } from 'prop-types';
+import { func, shape } from 'prop-types';
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { addToCart } from '../services/localStorage';
-// import setToLocal from '../services/localStorage';
 
 export default class Product extends Component {
-  handleClick = () => {
-    const { product } = this.props;
-    const productObj = {
-      ...product,
-    };
-    addToCart(productObj);
-  }
-
   render() {
-    const { product } = this.props;
+    const { product, handleClick } = this.props;
     const { title, thumbnail, price, id } = product;
     return (
       <div data-testid="product">
@@ -31,7 +21,7 @@ export default class Product extends Component {
         <button
           data-testid="product-add-to-cart"
           type="button"
-          onClick={ this.handleClick }
+          onClick={ () => handleClick(product) }
         >
           Adicionar ao carrinho
 
@@ -43,4 +33,5 @@ export default class Product extends Component {
 
 Product.propTypes = {
   product: shape().isRequired,
+  handleClick: func.isRequired,
 };
