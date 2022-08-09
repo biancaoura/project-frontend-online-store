@@ -29,6 +29,7 @@ export default class ShoppingCart extends Component {
   }
 
   handleIncrease = (product) => {
+    // console.log(product);
     const obj = {
       ...product,
     };
@@ -62,7 +63,7 @@ export default class ShoppingCart extends Component {
     const cartfilterSmall = cartItems
       .filter((item, index, array) => index === array
         .findIndex((objt) => objt.id === item.id));
-    console.log(cartfilterSmall);
+    // console.log(cartfilterSmall);
     this.setState({ cart: cartItems, cartFiltered: cartfilterSmall });
   }
 
