@@ -16,16 +16,3 @@ export const addRating = (id, item) => {
     saveRatings(id, [...ratings, item]);
   }
 };
-
-// export const removeCartItems = (item) => {
-//   const cartItems = readCartItems();
-//   saveCartItems(cartItems.filter((s) => s.id !== item.id));
-// };
-
-// export const removeOneItem = (item) => {
-//   const cartItems = readRatings();
-//   const reversed = cartItems.slice().reverse();
-//   saveCartItems(reversed
-//     .filter((_, index, array) => index !== array
-//       .findIndex((obj) => obj.id === item.id)));
-// };

@@ -1,23 +1,10 @@
 import { arrayOf, func, shape } from 'prop-types';
 import React, { Component } from 'react';
-// import { addToCart } from '../services/localStorage';
 
 export default class CartCard extends Component {
-  // removeCartItem = () => {
-  //   console.log('oi');
-  // }
-
-  // handleIncrease = (product) => {
-  //   console.log(product);
-  //   const productObj = {
-  //     ...product,
-  //   };
-  //   addToCart(productObj);
-  // }
-
   render() {
     const { items, item, handleIncrease, removeCartItem, handleDecrease } = this.props;
-    const { title, price, thumbnail, id, availableQuantity } = item;
+    const { title, price, thumbnail, id } = item;
     const quantity = items.filter((element) => element.id === id).length;
     return (
       <div>
@@ -47,7 +34,7 @@ export default class CartCard extends Component {
           type="button"
           data-testid="product-increase-quantity"
           onClick={ () => handleIncrease(item) }
-          disabled={ quantity === availableQuantity }
+          disabled={ quantity === item.available_quantity }
         >
           +
 
