@@ -18,7 +18,6 @@ export default class Checkout extends Component {
 
   componentDidMount() {
     const cartItems = getSavedCart();
-    console.log(cartItems);
     const filteredCart = cartItems
       .filter((item, index, array) => index === array
         .findIndex((objt) => objt.id === item.id));
@@ -54,7 +53,6 @@ export default class Checkout extends Component {
           <section key={ index }>
             <p>{item.title}</p>
             <p>{item.price}</p>
-            {/* <p>{cartItems.map((itm) => itm.id === item.id).length}</p> */}
           </section>
         )) }
         <span>

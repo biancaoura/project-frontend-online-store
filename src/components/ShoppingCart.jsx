@@ -29,7 +29,6 @@ export default class ShoppingCart extends Component {
   }
 
   handleIncrease = (product) => {
-    // console.log(product);
     const obj = {
       ...product,
     };

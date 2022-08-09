@@ -53,9 +53,7 @@ export default class ProductCard extends Component {
 
     if (!email.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,3})$/i) || rating <= 0) {
       return this.setState({
-        // email: '',
         invalid: true,
-        // textarea: '',
       });
     }
     addRating(id, ratingObj);
@@ -104,15 +102,9 @@ export default class ProductCard extends Component {
           checked={ checked }
           { ...this.state }
         />
-        {/* {invalid === true && <p data-testid="error-msg">Campos inválidos</p>} */}
         {
           ratings.map((review, index) => (
             <Review key={ index } review={ review } checked={ checked } />
-            // <div key={ index }>
-            //   <span data-testid="review-card-email">{ review.email }</span>
-            //   <span>{ review.textarea }</span>
-            //   <span>{ review.rating }</span>
-            // </div>
           ))
         }
       </div>

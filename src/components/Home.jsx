@@ -45,6 +45,7 @@ export default class Home extends Component {
     }
 
     handleClick = (product) => {
+      console.log(product.shipping);
       const productObj = {
         ...product,
       };

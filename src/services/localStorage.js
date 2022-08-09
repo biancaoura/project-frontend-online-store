@@ -13,16 +13,9 @@ const saveCartItems = (cartItems) => localStorage
 export const getSavedCart = () => readCartItems();
 
 export const addToCart = (item) => {
-  const obj = {
-    price: item.price,
-    title: item.title,
-    thumbnail: item.thumbnail,
-    id: item.id,
-    availableQuantity: item.available_quantity,
-  };
-  if (obj) {
+  if (item) {
     const cartItems = readCartItems();
-    saveCartItems([...new Set([...cartItems, obj])]);
+    saveCartItems([...new Set([...cartItems, item])]);
   }
 };
 
