@@ -2,7 +2,7 @@ import { shape } from 'prop-types';
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { getProductById } from '../services/api';
-import { addToCart } from '../services/localStorage';
+import { addToCart, getSavedCart } from '../services/localStorage';
 import { addRating, getRatings } from '../services/localStorageRating';
 import Rating from './Rating';
 import Review from './Review';
@@ -84,7 +84,10 @@ export default class ProductCard extends Component {
           <h3 data-testid="product-detail-name">{title}</h3>
           <img src={ thumbnail } alt={ title } data-testid="product-detail-image" />
           <span data-testid="product-detail-price">{price}</span>
-          <Link to={ `/cart/${id}` } data-testid="shopping-cart-button">Carrinho</Link>
+          <Link to={ `/cart/${id}` } data-testid="shopping-cart-button">
+            Carrinho
+            <p data-testid="shopping-cart-size">{ getSavedCart().length }</p>
+          </Link>
         </div>
         <button
           type="button"

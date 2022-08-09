@@ -67,7 +67,7 @@ export default class Home extends Component {
             >
               {loading ? <span>Carregando...</span>
                 : (
-                  <p>
+                  <p data-testid="shopping-cart-size">
                     { getSavedCart().length }
                   </p>
                 )}
