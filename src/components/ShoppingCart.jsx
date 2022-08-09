@@ -33,7 +33,6 @@ export default class ShoppingCart extends Component {
     };
     addToCart(obj);
     const cartItems = getSavedCart();
-    console.log(cartItems);
     const cartfilterSmall = cartItems
       .filter((item, index, array) => index === array
         .findIndex((objt) => objt.id === item.id));
@@ -46,8 +45,7 @@ export default class ShoppingCart extends Component {
     };
     removeOneItem(obj);
     const cartItems = getSavedCart();
-    console.log(cartItems);
-    const reversed = cartItems.slice().reverse();
+    const reversed = cartItems.slice();
     const cartfilterSmall = reversed
       .filter((item, index, array) => index === array
         .findIndex((objt) => objt.id === item.id));
