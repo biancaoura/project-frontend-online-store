@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 export default class Product extends Component {
   render() {
     const { product, handleClick } = this.props;
-    const { title, thumbnail, price, id } = product;
+    const { title, thumbnail, price, id, shipping } = product;
     return (
       <div data-testid="product">
         <span>{ title }</span>
@@ -17,6 +17,7 @@ export default class Product extends Component {
         >
           Mais detalhes
         </Link>
+        { shipping.free_shipping && <p data-testid="free-shipping">Frete Grátis</p> }
         <button
           data-testid="product-add-to-cart"
           type="button"
