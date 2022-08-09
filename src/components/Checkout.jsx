@@ -18,7 +18,7 @@ export default class Checkout extends Component {
 
   componentDidMount() {
     const cartItems = getSavedCart();
-    // console.log(cartItems);
+    console.log(cartItems);
     const filteredCart = cartItems
       .filter((item, index, array) => index === array
         .findIndex((objt) => objt.id === item.id));
