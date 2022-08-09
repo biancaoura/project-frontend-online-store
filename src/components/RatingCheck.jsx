@@ -1,9 +1,9 @@
-import { number, func } from 'prop-types';
+import { number, func, bool } from 'prop-types';
 import React, { Component } from 'react';
 
 export default class RatingCheck extends Component {
   render() {
-    const { value, onChange } = this.props;
+    const { value, onChange, checked } = this.props;
     return (
       <input
         type="radio"
@@ -11,6 +11,7 @@ export default class RatingCheck extends Component {
         value={ value }
         data-testid={ `${value}-rating` }
         onChange={ (event) => onChange(event) }
+        checked={ checked }
       />
     );
   }
@@ -18,4 +19,5 @@ export default class RatingCheck extends Component {
 RatingCheck.propTypes = {
   value: number.isRequired,
   onChange: func.isRequired,
+  checked: bool.isRequired,
 };

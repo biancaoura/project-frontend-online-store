@@ -11,10 +11,11 @@ export default class Rating extends React.Component {
   //   rating: 0,
   // }
 
-  handleChange = ({ target }) => {
-    const { name, value } = target;
-    this.setState({ [name]: value });
-  }
+  // handleChange = ({ target }) => {
+  //   const { name, value } = target;
+  //   if (target.type === 'radio') this.setState({ checked: true });
+  //   this.setState({ [name]: value });
+  // }
 
   // handleClick = (event) => {
   //   event.preventDefault();
@@ -51,7 +52,7 @@ export default class Rating extends React.Component {
     const FIVE = 5;
 
     const arrayNumbers = [ONE, TWO, THREE, FOUR, FIVE];
-    const { handleClick, invalid, handleChange, email, textarea } = this.props;
+    const { handleClick, invalid, handleChange, email, textarea, checked } = this.props;
     // const { email, textarea } = this.state;
 
     return (
@@ -72,6 +73,7 @@ export default class Rating extends React.Component {
                 <RatingCheck
                   value={ index }
                   onChange={ (event) => handleChange(event) }
+                  checked={ checked }
                 />
               </section>
             ))}
@@ -113,5 +115,6 @@ Rating.propTypes = {
   invalid: bool.isRequired,
   email: string.isRequired,
   textarea: string.isRequired,
+  checked: bool.isRequired,
   // rating: number.isRequired,
 };

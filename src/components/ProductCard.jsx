@@ -15,12 +15,13 @@ export default class ProductCard extends Component {
     rating: 0,
     ratings: [],
     invalid: false,
+    checked: false,
   }
 
   async componentDidMount() {
     const { match: { params: { id } } } = this.props;
     const response = await getProductById(id);
-    const reviews = getRatings();
+    const reviews = getRatings(id);
     this.setState({
       product: response,
       ratings: reviews,
@@ -36,6 +37,7 @@ export default class ProductCard extends Component {
 
   handleChange = ({ target }) => {
     const { name, value } = target;
+    if (target.type === 'radio') this.setState({ checked: true });
     this.setState({ [name]: value });
   }
 
@@ -44,7 +46,6 @@ export default class ProductCard extends Component {
     const { email, rating, textarea, product } = this.state;
     const { id } = product;
     const ratingObj = {
-      productID: id,
       email,
       rating,
       textarea,
@@ -57,24 +58,24 @@ export default class ProductCard extends Component {
         // textarea: '',
       });
     }
-    addRating(ratingObj);
+    addRating(id, ratingObj);
 
     if (email.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,3})$/i) || rating > 0) {
-      const ratingsLocal = getRatings();
-      console.log(ratingsLocal);
+      const ratingsLocal = getRatings(id);
       return (
         this.setState({
           email: '',
           invalid: false,
           textarea: '',
           ratings: ratingsLocal,
+          checked: false,
         })
       );
     }
   }
 
   render() {
-    const { product, ratings } = this.state;
+    const { product, ratings, checked } = this.state;
     const { title, thumbnail, price, id } = product;
 
     return (
@@ -97,12 +98,13 @@ export default class ProductCard extends Component {
         <Rating
           handleClick={ this.handleClickSubmit }
           handleChange={ this.handleChange }
+          checked={ checked }
           { ...this.state }
         />
         {/* {invalid === true && <p data-testid="error-msg">Campos inválidos</p>} */}
         {
-          ratings.filter(({ productID }) => productID === id).map((review, index) => (
-            <Review key={ index } review={ review } />
+          ratings.map((review, index) => (
+            <Review key={ index } review={ review } checked={ checked } />
             // <div key={ index }>
             //   <span data-testid="review-card-email">{ review.email }</span>
             //   <span>{ review.textarea }</span>

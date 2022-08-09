@@ -1,21 +1,19 @@
-const RATING_KEY = 'rating';
-
-const readRatings = () => {
-  if (!JSON.parse(localStorage.getItem(RATING_KEY))) {
-    localStorage.setItem(RATING_KEY, JSON.stringify([]));
+const readRatings = (id) => {
+  if (!JSON.parse(localStorage.getItem(id))) {
+    localStorage.setItem(id, JSON.stringify([]));
   }
-  return JSON.parse(localStorage.getItem(RATING_KEY));
+  return JSON.parse(localStorage.getItem(id));
 };
 
-const saveRatings = (ratings) => localStorage
-  .setItem(RATING_KEY, JSON.stringify(ratings));
+const saveRatings = (id, ratings) => localStorage
+  .setItem(id, JSON.stringify(ratings));
 
-export const getRatings = () => readRatings();
+export const getRatings = (id) => readRatings(id);
 
-export const addRating = (item) => {
+export const addRating = (id, item) => {
   if (item) {
-    const ratings = readRatings();
-    saveRatings([...new Set([...ratings, item])]);
+    const ratings = readRatings(id);
+    saveRatings(id, [...ratings, item]);
   }
 };
 
