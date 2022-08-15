@@ -1,0 +1,18 @@
+.loading {
+  align-items: center;
+  display: flex;
+}
+
+.loading svg {
+  font-size: 70px;
+  animation: rotate 1s linear infinite;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

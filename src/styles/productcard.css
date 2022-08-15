@@ -1,0 +1,315 @@
+.product-page {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  flex-flow: column;
+  height: 100%;
+}
+
+.product-card-header {
+  align-items: center;
+  background-color: rgb(48, 48, 46);
+  display: flex;
+  height: 89px;
+  width: 100%;
+}
+
+.product-card-header .title-container {
+  top: 5px;
+}
+
+.product-card-header .cart-link {
+  margin: 0;
+  top: 25px;
+}
+
+.product-card {
+  background-color: #fff;
+  border-radius: 4px;
+  box-sizing: border-box;
+  box-shadow: 0 1px 0 1px rgb(0 0 0 / 33%);
+  display: flex;
+  justify-content: space-evenly;
+  padding: 16px;
+  width: 1200px;
+}
+
+.name-img-div {
+  display: flex;
+}
+
+.deal-of-the-day {
+  align-items: center;
+  background-color: rgb(29, 151, 228);
+  border-radius: 3px;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  margin-top: 0.6em;
+  text-transform: uppercase;
+  padding: 2px;
+  width: 98px;
+}
+
+.deal-of-the-day span {
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.name-img-div figure {
+  display: flex;
+  max-height: 468;
+  margin: 0;
+  width: 378;
+}
+
+.side-img {
+  display: flex;
+  gap: 0.3em;
+  flex-flow: column;
+}
+
+figure img {
+  height: 450px;
+  width: 450px;
+}
+
+.img-side {
+  cursor: pointer;
+  height: 44px;
+  padding: 2px;
+  width: 38px;
+}
+
+.side-img-div {
+  border: 2px solid rgb(0 0 0 / 33%);
+  border-radius: 6px;
+  height: 48px;
+  padding: 2px;
+  width: 48px;
+}
+
+.side-img-div:hover {
+  border: 2px solid rgb(7, 120, 202);
+}
+
+.details-card-pdt {
+  padding: 1em;
+  width: 340px;
+}
+
+.buy-it {
+  align-items: center;
+  border-radius: 7px;
+  box-sizing: border-box;
+  display: flex;
+  flex-flow: column;
+  width: 240px;
+}
+
+.buy-it-in {
+  border: 1px solid rgba(0, 0, 0, 0.177);
+  border-radius: 7px;
+  display: flex;
+  flex-flow: column;
+  gap: 2em;
+  height: 100%;
+  padding: 16px;
+  width: 100%;
+}
+
+.stock {
+  display: flex;
+  gap: 1em;
+  flex-flow: column;
+}
+
+.dropbtn-quan {
+  align-items: center;
+  display: flex;
+  gap: 0.3em;
+}
+
+.stock:hover svg {
+  transform: rotate(180deg);
+}
+
+.dropbtn-quan svg {
+  transition: transform 300ms;
+}
+
+.buy-it-buttons {
+  align-items: center;
+  display: flex;
+  flex-flow: column;
+  gap: 0.7em;
+  height: 200px;
+  width: 100%;
+}
+
+.buy-it-buttons button {
+  background-color: rgba(65, 137, 230, 0.15);
+  border: transparent;
+  border-radius: 4px;
+  color: #3483fa;
+  cursor: pointer;
+  font-size: 16px;
+  height: 44px;
+  margin-bottom: 1em;
+  padding: 0.4em;
+  width: 220px;
+}
+
+.buy-it-buttons button:hover {
+  transform: scale(1.03);
+}
+
+.buy-it-buttons .buy-it-now {
+  align-items: center;
+  border-radius: 4px;
+  background-color: #3483fa;
+  color: #fff;
+  display: flex;
+  font-size: 16px;
+  justify-content: center;
+  padding: 0.9em;
+  text-align: center;
+  text-decoration: none;
+  width: 218px;
+}
+
+.buy-it-now span {
+  font-size: 16px;
+  text-decoration: none;
+}
+
+.buy-it-buttons .buy-it-now:hover {
+  transform: scale(1.03);
+}
+
+.warranty {
+  align-items: center;
+  color: rgba(0,0,0,.55);
+  display: flex;
+}
+
+.warranty span {
+  font-size: 13px;
+  font-weight: 400;
+}
+
+.warranty svg {
+  font-size: 25px;
+}
+
+.shipping {
+  align-items: center;
+  display: flex;
+  gap: 0.7em;
+}
+
+.shipping svg {
+  color: #00a650;
+  font-size: 24px;
+}
+
+.shipping span {
+  color: #00a650;
+}
+
+.rating-star {
+  display: flex;
+  gap: 0.4em;
+}
+
+.product-name {
+  font-size: 22px;
+  font-weight: 600;
+  word-break: break-word;
+}
+
+.condition span {
+  color: rgba(0, 0, 0, 0.475);
+  font-size: 15px;
+  font-weight: 300;
+  white-space: pre-wrap;
+}
+
+.price-div {
+  align-items: center;
+  display: flex;
+  gap: 0.4em;
+}
+
+.price-original {
+  display: flex;
+  flex-flow: column;
+}
+
+.price-main {
+  display: flex;
+  gap: 0.6em;
+}
+
+.price {
+  font-size: 35px;
+  font-weight: 300;
+}
+
+.off-prd-card {
+  color: #00a650;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.options-title {
+  font-size: 35px;
+}
+
+.dropbtn-quan {
+  border: none;
+  color: #333;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.dropdown-quan {
+  display: inline-block;
+  position: relative;
+}
+
+.dropdown-content-quan {
+  background-color: rgb(255, 255, 253);
+  border-radius: 5px;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+  display: none;
+  flex-flow: column;
+  height: auto;
+  min-width: 100px;
+  padding: 0.6em 0;
+  position: absolute;
+  width: auto;
+  z-index: 1;
+}
+
+.dropdown-content-quan button {
+  background-color: rgb(255, 255, 253);
+  border: transparent;
+  color: #333;
+  cursor: pointer;
+  padding: 0.8em 2em;
+  text-align: left;
+  width: 100%;
+}
+
+.dropdown-content-quan button:disabled {
+  opacity: 0.6;
+  color: #252729;
+}
+
+.dropdown-content-quan button:hover {
+  background-color: #99b4dd;
+}
+
+.dropdown-quan:hover .dropdown-content-quan { display: flex;}
+

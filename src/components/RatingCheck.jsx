@@ -1,17 +1,17 @@
-import { number, func, bool } from 'prop-types';
+import { number, func } from 'prop-types';
 import React, { Component } from 'react';
+import StarRatings from 'react-star-ratings';
 
 export default class RatingCheck extends Component {
   render() {
-    const { value, onChange, checked } = this.props;
+    const { value, onChange } = this.props;
     return (
-      <input
-        type="radio"
+      <StarRatings
+        rating={ value }
+        starRatedColor="gold"
+        changeRating={ (event) => onChange(event) }
+        numberOfStars={ 5 }
         name="rating"
-        value={ value }
-        data-testid={ `${value}-rating` }
-        onChange={ (event) => onChange(event) }
-        checked={ checked }
       />
     );
   }
@@ -19,5 +19,4 @@ export default class RatingCheck extends Component {
 RatingCheck.propTypes = {
   value: number.isRequired,
   onChange: func.isRequired,
-  checked: bool.isRequired,
 };

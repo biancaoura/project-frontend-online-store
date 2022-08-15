@@ -1,5 +1,9 @@
+/* eslint-disable react/jsx-max-depth */
 import { arrayOf, func, shape } from 'prop-types';
 import React, { Component } from 'react';
+import * as AiIcons from 'react-icons/ai';
+import imgToHD, { numberWithCommas } from '../services/inprovements';
+import '../styles/cartcard.css';
 
 export default class CartCard extends Component {
   render() {
@@ -7,40 +11,57 @@ export default class CartCard extends Component {
     const { title, price, thumbnail, id } = item;
     const quantity = items.filter((element) => element.id === id).length;
     return (
-      <div>
-        <h3 data-testid="shopping-cart-product-name">{ title }</h3>
-        <button
-          type="button"
-          data-testid="remove-product"
-          onClick={ () => removeCartItem(item) }
-        >
-          X
-        </button>
-        <img
-          src={ thumbnail }
-          alt={ title }
-        />
-        <button
-          type="button"
-          data-testid="product-decrease-quantity"
-          onClick={ () => handleDecrease(item) }
-          disabled={ quantity < 2 }
-        >
-          -
+      <>
+        <div className="cartcard-items">
+          <section className="cartcard-remove-img">
+            <button
+              type="button"
+              data-testid="remove-product"
+              onClick={ () => removeCartItem(item) }
+            >
+              <AiIcons.AiFillCloseSquare />
+            </button>
+            <img
+              src={ imgToHD(thumbnail) }
+              alt={ title }
+            />
+          </section>
+          <section className="cartcard-details">
+            <h3 data-testid="shopping-cart-product-name">{ title }</h3>
+            {item.original_price !== null
+              ? (
+                <span
+                  className="original_price"
+                >
+                  {`R$ ${numberWithCommas(item.original_price)}`}
 
-        </button>
-        <span data-testid="shopping-cart-product-quantity">{quantity}</span>
-        <button
-          type="button"
-          data-testid="product-increase-quantity"
-          onClick={ () => handleIncrease(item) }
-          disabled={ quantity === item.available_quantity }
-        >
-          +
+                </span>)
+              : ''}
 
-        </button>
-        <span>{ price }</span>
-      </div>
+            <span>{ `R$ ${numberWithCommas(price)}` }</span>
+            <div className="add-remove-item">
+              <button
+                type="button"
+                data-testid="product-decrease-quantity"
+                onClick={ () => handleDecrease(item) }
+                disabled={ quantity < 2 }
+              >
+                <AiIcons.AiOutlineMinus />
+              </button>
+              <span data-testid="shopping-cart-product-quantity">{quantity}</span>
+              <button
+                type="button"
+                data-testid="product-increase-quantity"
+                onClick={ () => handleIncrease(item) }
+                disabled={ quantity === item.available_quantity }
+              >
+                <AiIcons.AiOutlinePlus />
+              </button>
+            </div>
+          </section>
+        </div>
+        <hr />
+      </>
     );
   }
 }

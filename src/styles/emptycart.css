@@ -1,0 +1,43 @@
+.empty-cart {
+  align-content: center;
+  align-items: center;
+  background-color: #fff;
+  border-radius: 6px;
+  box-sizing: border-box;
+  box-shadow: 12px 8px 8px 1px rgb(0 0 0 / 33%);
+  display: flex;
+  gap: 2em;
+  height: 180px;
+  justify-content: space-evenly;
+  padding: 16px;
+  width: 700px;
+}
+
+.empty-cart h1 {
+  font-size: 27px;
+}
+
+.empty-cart svg {
+  font-size: 100px;
+}
+
+.empty-cart div a {
+  color: rgba(0, 0, 0, 0.712);
+  text-decoration: none;
+}
+
+.empty-cart .back-to-home {
+  align-items: center;
+  display: flex;
+  gap: 1em;
+  font-size: 20px;
+}
+
+.empty-cart .back-to-home svg {
+  font-size: 30px;
+}
+
+.back-to-home:hover a,.back-to-home:hover svg {
+  color: #3483fa;
+  transform: scale(1.04);
+}

@@ -10,8 +10,10 @@
     "prop-types": "^15.8.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "react-icons": "^4.4.0",
     "react-router-dom": "^5.2.0",
-    "react-scripts": "5.0.1"
+    "react-scripts": "5.0.1",
+    "react-star-ratings": "^2.3.0"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -35,6 +37,10 @@
   },
   "devDependencies": {
     "@sheerun/mutationobserver-shim": "^0.3.3",
+    "@types/prop-types": "^15.7.5",
+    "@types/react": "^18.0.17",
+    "@types/react-router-dom": "^5.3.3",
+    "@types/react-star-ratings": "^2.3.0",
     "eslint": "7.31.0",
     "eslint-config-trybe-frontend": "1.2.3",
     "eslint-plugin-babel": "^5.3.1",

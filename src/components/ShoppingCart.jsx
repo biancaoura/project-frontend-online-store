@@ -1,11 +1,16 @@
+/* eslint-disable react/jsx-max-depth */
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import * as BiIcons from 'react-icons/bi';
 import {
   addToCart,
   getSavedCart,
   removeCartItems,
   removeOneItem } from '../services/localStorage';
 import CartCard from './CartCard';
+import '../styles/shoppingcart.css';
+import { numberWithCommas } from '../services/inprovements';
+import EmptyCart from './EmptyCart';
 
 export default class ShoppingCart extends Component {
   state = {
@@ -16,8 +21,11 @@ export default class ShoppingCart extends Component {
   async componentDidMount() {
     const cartItems = getSavedCart();
     const cartfilterSmall = cartItems
+      .sort((a, b) => a.title.localeCompare(b.title))
       .filter((item, index, array) => index === array
         .findIndex((obj) => obj.id === item.id));
+    console.log(cartItems
+      .sort((a, b) => a.title.localeCompare(b.title)));
     // Solução com o fetch, não deve ser usada até que complete 100%
     // const testFilter = [...new Set(cartItems
     //   .reduce((acc, { id }) => [...acc, id], []))];
@@ -33,7 +41,8 @@ export default class ShoppingCart extends Component {
       ...product,
     };
     addToCart(obj);
-    const cartItems = getSavedCart();
+    const cartItems = getSavedCart()
+      .sort((a, b) => a.title.localeCompare(b.title));
     const cartfilterSmall = cartItems
       .filter((item, index, array) => index === array
         .findIndex((objt) => objt.id === item.id));
@@ -45,9 +54,10 @@ export default class ShoppingCart extends Component {
       ...product,
     };
     removeOneItem(obj);
-    const cartItems = getSavedCart();
-    const reversed = cartItems.slice();
-    const cartfilterSmall = reversed
+    const cartItems = getSavedCart()
+      .sort((a, b) => a.title.localeCompare(b.title));
+      // ordena o array por titulo, impedindo que troque de index
+    const cartfilterSmall = cartItems
       .filter((item, index, array) => index === array
         .findIndex((objt) => objt.id === item.id));
     this.setState({ cart: cartItems, cartFiltered: cartfilterSmall });
@@ -62,33 +72,103 @@ export default class ShoppingCart extends Component {
     const cartfilterSmall = cartItems
       .filter((item, index, array) => index === array
         .findIndex((objt) => objt.id === item.id));
-    // console.log(cartfilterSmall);
     this.setState({ cart: cartItems, cartFiltered: cartfilterSmall });
   }
 
   render() {
     const { cart, cartFiltered } = this.state;
     return (
-      <div>
-        <p>
-          { cart.length }
-        </p>
-        {cart.length === 0 && (
-          <p data-testid="shopping-cart-empty-message">Seu carrinho está vazio</p>)}
-        {cart.length > 0 && (
-          cartFiltered.map((item, index) => (
-            <CartCard
-              key={ index }
-              item={ item }
-              items={ cart }
-              handleIncrease={ this.handleIncrease }
-              removeCartItem={ this.removeCartItem }
-              handleDecrease={ this.handleDecrease }
-            />
-          ))
-        )}
-        <Link to="/checkout" data-testid="checkout-products">Finalizar compra</Link>
-      </div>
+      <section className="cart-section-all">
+        <header className="header-cart">
+          <div className="title-container-cart">
+            <BiIcons.BiShoppingBag className="shop-icon" />
+            <h1>Online Shopping</h1>
+          </div>
+          <div className="back-home">
+            {cart.length > 0 && (
+              <Link
+                to="/"
+              >
+                <BiIcons.BiHomeAlt />
+                <span>Home</span>
+              </Link>)}
+          </div>
+        </header>
+        <div className="cart-page">
+          {cart.length === 0 && (
+            <EmptyCart />)}
+          {cart.length !== 0 && (
+            <div className="cart">
+              <div className="cart-items">
+                {cart.length > 0 && (
+                  cartFiltered.map((item, index) => (
+                    <CartCard
+                      key={ index }
+                      item={ item }
+                      items={ cart }
+                      handleIncrease={ this.handleIncrease }
+                      removeCartItem={ this.removeCartItem }
+                      handleDecrease={ this.handleDecrease }
+                    />
+                  ))
+                )}
+              </div>
+              <div className="checkout">
+                <h2>Carrinho</h2>
+                <span>{`(${cart.length}) no carrinho`}</span>
+                <span className="total-price-cart">
+                  {`Total R$${numberWithCommas(cart
+                    .reduce((acc, { price }) => acc + price, 0).toFixed(2))}`}
+
+                </span>
+                {cart.filter((e) => e.original_price !== null).length !== 0
+                && (
+                  <span className="original-price">
+                    {`R$ ${numberWithCommas((cart
+                      .reduce((acc, e) => acc + e.original_price, 0)
+                      + cart.filter((e) => e.original_price === null)
+                        .reduce((acc, { price }) => acc + price, 0)).toFixed(2))}`}
+                  </span>)}
+                <span className="off-price">
+                  {cart.filter((e) => e.original_price !== null).length !== 0
+                    ? `Você economizou ${Math.round(((cart
+                      .reduce((acc, e) => acc + e.original_price, 0) - cart
+                      .filter((e) => e.original_price !== null)
+                      .reduce((acc, { price }) => acc + price, 0))
+                    * 100) / cart
+                      .reduce((acc, e) => acc
+                  + e.original_price,
+                      0))}%` : ''}
+                </span>
+                <div className="free-shipping free-shiping-cart">
+                  {cartFiltered
+                    .every(({ shipping }) => shipping
+                      .free_shipping === false)
+                      && 'Não há produtos com frete grátis'}
+                  {cartFiltered
+                    .every(({ shipping }) => shipping
+                      .free_shipping === true)
+                    && 'Todos os itens possuem frete grátis'}
+                  {(cartFiltered.some(({ shipping }) => shipping
+                    .free_shipping === false) && cartFiltered
+                    .some(({ shipping }) => shipping
+                      .free_shipping === true))
+                      && 'Nem todos os produtos possuem frete grátis'}
+                </div>
+                <div className="checkout-button">
+                  <Link
+                    to="/checkout"
+                    data-testid="checkout-products"
+                  >
+                    Finalizar compra
+
+                  </Link>
+                </div>
+              </div>
+            </div>
+          )}
+        </div>
+      </section>
     );
   }
 }

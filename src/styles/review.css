@@ -1,0 +1,46 @@
+.reviews {
+  background-color: #fff;
+  border-radius: 4px;
+  box-shadow: 0 1px 0 1px rgb(0 0 0 / 33%);
+  display: flex;
+  gap: 2em;
+  flex-flow: column;
+  margin: 2em;
+  padding: 1em;
+  width: 1200px;
+}
+
+.review {
+  display: flex;
+  flex-flow: column;
+  gap: 0.5em;
+}
+
+.review-textarea {
+  color: rgba(0,0,0,.9);
+  font-size: 20px;
+}
+
+.review-email {
+  color: rgba(0, 0, 0, 0.771);
+  font-size: 20px;
+}
+
+.email-text {
+  display: flex;
+  flex-flow: column;
+  gap: 0.4em;
+  margin-top: 0.8em;
+}
+
+.reviews hr {
+  width: 100%;
+}
+
+.reviews-div {
+  display: flex;
+  flex-flow: column;
+  gap: 2em;
+  margin-bottom: 3em;
+  padding: 0.6em;
+}

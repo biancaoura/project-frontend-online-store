@@ -1,0 +1,160 @@
+* {
+  box-sizing: border-box;
+}
+
+.rating {
+  align-items: center;
+  background-color: #fff;
+  border-radius: 5px;
+  box-sizing: border-box;
+  box-shadow: 0 1px 0 1px rgb(0 0 0 / 33%);
+  display: flex;
+  justify-content: space-around;
+  margin: 3em 0;
+  width: 1200px;
+}
+
+.rating-form {
+  display: flex;
+  flex-flow: column;
+  padding: 16px;
+}
+
+.rating-form input {
+  width: 250px;
+}
+
+.rating-form textarea {
+  resize: none;
+  width: 250px;
+}
+
+.rating-form button {
+  width: 100px;
+}
+
+.rating-form-inner {
+  display: flex;
+  gap: 0.8em;
+  flex-flow: column;
+}
+
+.rating-form-inner input {
+  font-family: "Proxima Nova", sans-serif;
+  padding: 0.5em;
+}
+
+.rating-form-inner textarea {
+  font-family: "Proxima Nova", sans-serif;
+  padding: 1em;
+}
+
+.rating-form-inner button {
+  align-self: flex-end;
+  background-color: #0c4cb5;
+  border: transparent;
+  border-radius: 6px;
+  box-shadow: 0 0 0 1px rgb(0 0 0 / 33%);
+  color: #fff;
+  cursor: pointer;
+  font-size: 16px;
+  padding: 0.5em;
+  width: 80px;
+}
+
+.rating-form-inner button:hover {
+  transform: scale(1.1);
+}
+
+.rating-form-inner input:focus, .rating-form-inner textarea:focus {
+  outline: none;
+}
+
+.evaluations {
+  padding: 16px;
+  margin-bottom: 1.8em;
+  width: 550px;
+}
+
+.user-rating {
+  width: 500px;
+}
+
+.heading {
+  font-size: 25px;
+  margin-right: 25px;
+}
+
+.average {
+  color: rgb(0 0 0 / 53%);
+  font-size: 14px;
+}
+
+.row {
+  color: rgb(0 0 0 / 53%);
+  font-size: 12px;
+  width: 550px;
+}
+
+.fa {
+  font-size: 25px;
+}
+
+.checked {
+  color: orange;
+}
+
+.side {
+  float: left;
+  width: 80px;
+  margin-top: 10px;
+}
+
+.middle {
+  margin-top:10px;
+  float: left;
+  width: 70%;
+}
+
+.right {
+  text-align: right;
+  width: 28px;
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.bar-container {
+  width: 100%;
+  background-color: #f1f1f1;
+  text-align: center;
+  color: white;
+}
+
+.bar-5 {
+  border-radius: 6px;
+  height: 8px; background-color: #00358a;}
+.bar-4 {
+  border-radius: 6px;
+  height: 8px; background-color: #00358a;}
+.bar-3 {
+  border-radius: 6px;
+  height: 8px; background-color: #00358a;}
+.bar-2 {
+  border-radius: 6px;
+  height: 8px; background-color: #00358a;}
+.bar-1 {
+  border-radius: 6px;
+  height: 8px; background-color: #00358a;}
+
+@media (max-width: 400px) {
+  .side, .middle {
+    width: 100%;
+  }
+  .right {
+    display: none;
+  }
+}

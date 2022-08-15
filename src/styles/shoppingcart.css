@@ -1,0 +1,142 @@
+body, html {
+  background-color: #ededed;
+  height: 100%;
+}
+
+.cart-section-all {
+  height: 100%;
+}
+
+.cart-page {
+  align-items: center;
+  display: flex;
+  min-height: 500px;
+  justify-content: center;
+}
+
+.header-cart {
+  align-content: flex-end;
+  align-items: center;
+  background-color: rgb(48, 48, 46);
+  display: flex;
+  justify-content: center;
+  height: 100px;
+  margin-bottom: 3em;
+  padding-top: 2em;
+}
+
+.header-cart .title-container-cart {
+  align-items: center;
+  color: #fff;
+  display: flex;
+  gap: 1em;
+  font-size: 24px;
+  left: 29px;
+  position: absolute;
+  top: 0;
+}
+
+.back-home {
+  align-self: flex-end;
+  color: #fff;
+  font-size: 30px;
+  right: 30px;
+  position: absolute;
+  top: 28px;
+}
+
+.back-home svg {
+  color: #fff;
+}
+
+.back-home a {
+  align-items: center;
+  display: flex;
+  flex-flow: column;
+  text-decoration: none;
+}
+
+.back-home a span {
+  color: #fff;
+  font-size: 20px;
+}
+
+.cart {
+  align-items: center;
+  background-color: #fff;
+  border-radius: 5px;
+  box-sizing: border-box;
+  box-shadow: 0 2px 0 2px rgb(0, 0, 0 / 33%);
+  display: flex;
+  margin-bottom: 2em;
+  min-height: 400px;
+  padding: 2em;
+  width: 1200px;
+}
+
+.cart-items {
+  display: flex;
+  flex-flow: column;
+  gap: 0.8em;
+}
+
+.cart-items hr {
+  width: 90%;
+}
+
+.checkout {
+  box-shadow: 0 1px 0 1px rgb(0, 0, 0 / 33%);
+  display: flex;
+  flex-flow: column;
+  gap: 0.6em;
+  height: 400px;
+  padding: 1em;
+  position: fixed;
+  right: 150px;
+  top: 160px;
+  width: 300px;
+}
+
+.checkout h2 {
+  font-size: 30px;
+  font-family: 'Proxima Nova', sans-serif;
+}
+
+.checkout .total-price-cart {
+  color: rgb(0, 0, 0 / 33%);
+  font-size: 20px;
+  font-family: "Proxima Nova", sans-serif;
+}
+
+.checkout .off-price {
+  color: #00a650;
+  font-size: 16px;
+}
+
+.checkout .original-price {
+  color: red;
+  font-size: 12px;
+}
+
+.checkout span {
+  font-size: 20px;
+}
+
+.checkout-button a {
+  background-color: #3483fa;
+  border-radius: 8px;;
+  color: #fff;
+  margin-top: 1em;
+  text-decoration: none;
+  padding: 15px;
+  position: relative;
+  top: 30px;
+}
+
+.checkout-button:hover {
+  transform: scale(1.02);
+}
+
+.free-shiping-cart {
+  font-size: 14px;
+}

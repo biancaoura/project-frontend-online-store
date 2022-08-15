@@ -1,0 +1,68 @@
+.cartcard-items {
+  display: flex;
+  gap: 2em;
+  width: 800px;
+}
+
+.cartcard-remove-img {
+  display: flex;
+}
+
+.cartcard-remove-img button {
+  align-self: flex-start;
+  background: none;
+  border: transparent;
+  cursor: pointer;
+  display: block;
+  font-size: 25px;
+  width: 50px;
+  z-index: 2;
+}
+
+.cartcard-remove-img img {
+  width: 200px;
+}
+
+.cartcard-details {
+  color: rgba(0, 0, 0, 0.852);
+  display: flex;
+  flex-flow: column;
+  font-size: 15px;
+  gap: 1em;
+  font-weight: 300;
+  word-wrap: break-word;
+}
+
+.add-remove-item {
+  cursor: pointer;
+  display: flex;
+  gap: 1em;
+}
+
+.add-remove-item button {
+  background: none;
+  border: transparent;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+.add-remove-item button:enabled svg {
+  color: #00a650;
+}
+
+.add-remove-item button:disabled svg {
+  color: rgba(255, 4, 4, 0.917);
+}
+
+.add-remove-item svg {
+  color: black;
+  cursor: pointer;
+}
+
+.original_price {
+  color: rgba(0, 0, 0, 0.524);
+  font-size: 12px;
+  text-decoration: line-through;
+}
+
+.cartcard-items:hover .cartcard-remove-img button {display: block;}
