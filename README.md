@@ -22,24 +22,6 @@
 - Button to remove a specific product from the cart
 - Button to redirect to `/checkout`
 
-#### Checkout page:
-
-- Form to add user's info (all required):
-  - full name;
-  - email;
-  - national's id;
-  - phone number;
-  - address;
-  - payment method
-#### Review component:
-
-- Form to input rating:
-  - input user's email (required);
-  - input rating `1 to 5` (required);
-  - input comments.
-
-- Display other users' reviews
-
 #### Product Card page:
 
 - Product's details:
@@ -52,6 +34,24 @@
 - Shopping cart button to redirect to `/cart`
 - Button to add the product to cart
 
+#### Review component:
+
+- Form to input rating:
+  - input user's email (required);
+  - input rating `1 to 5` (required);
+  - input comments.
+
+- Display other users' reviews
+
+#### Checkout page:
+
+- Form to add user's info (all required):
+  - full name;
+  - email;
+  - national's id;
+  - phone number;
+  - address;
+  - payment method
 ##
 
 #### First project using Kanban Method
