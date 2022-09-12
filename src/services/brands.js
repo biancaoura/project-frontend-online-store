@@ -1,9 +1,6 @@
 import { phones } from './const';
 
 export default function brandsCheck(name, catego, str1, str2) {
-  console.log(name, catego, str1, str2);
-  console.log(name.match(/smartphones/i));
-
   if (name.match(/smartphones/i)
   || name.match(/celular/i)
   || name.match(/consoles/i)

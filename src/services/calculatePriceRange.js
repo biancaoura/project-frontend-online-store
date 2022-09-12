@@ -1,9 +1,3 @@
-// const TWENTY_PERCENT = 20;
-// const FORTY_PERCENT = 40;
-// const SIXTY_PERCENT = 60;
-// const EIGHTY_PERCENT = 80;
-// const HUNDRED_PERCENT = 100;
-
 export default function calculateRangeMin(min) {
   const validMin = min === 0 || min === '';
   if (validMin) {
