@@ -194,7 +194,6 @@ export default class Home extends Component {
     }
 
     handleClickCategory = (name, catego) => {
-      console.log(name, catego);
       this.setState({
         loading: true,
         productName: {
@@ -280,7 +279,6 @@ export default class Home extends Component {
                 <input
                   type="text"
                   id="home"
-                  data-testid="query-input"
                   onChange={ this.handleChange }
                   onKeyDown={ this.handleKeyDown }
                   name="inputProduct"
@@ -292,7 +290,6 @@ export default class Home extends Component {
                 <button
                   type="button"
                   onClick={ this.handleClickButton }
-                  data-testid="query-button"
                 >
                   <BsIcons.BsSearch className="lupinha" />
                 </button>
@@ -337,10 +334,9 @@ export default class Home extends Component {
             </form>
             <Link
               to="/cart/:id"
-              data-testid="shopping-cart-button"
               className="cart-link"
             >
-              <div className="cart-size" data-testid="shopping-cart-size">
+              <div className="cart-size">
                 { getSavedCart().length > MAX_CART_LENGTH ? '9+' : getSavedCart().length }
               </div>
               <BsIcons.BsCart3 className="cart-icon" fill="white" />
@@ -595,7 +591,6 @@ export default class Home extends Component {
                             ? shipping.free_shipping === filterShipping : true))
                             .map((product) => (
                               <Product
-                                data-testid="product"
                                 key={ product.id }
                                 product={ product }
                                 handleClick={ this.handleClick }

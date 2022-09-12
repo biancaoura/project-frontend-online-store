@@ -16,16 +16,10 @@ export default class Review extends Component {
           starRatedColor="gold"
         />
         <section className="email-text">
-          <span
-            data-testid="review-card-rating"
-            className="review-textarea"
-          >
+          <span className="review-textarea">
             { textarea }
           </span>
-          <span
-            data-testid="review-card-email"
-            className="review-email"
-          >
+          <span className="review-email">
             { email }
           </span>
         </section>

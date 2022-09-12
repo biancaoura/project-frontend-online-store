@@ -18,12 +18,10 @@ export default class Product extends Component {
     const area2 = attributes.find((e) => e.id.match(/covered_area/i));
     return (
       <div
-        data-testid="product"
         className={ `product ${checkDomainId(product.domain_id) ? 'properties' : ''}` }
       >
         <Link
           to={ `/product/${id}` }
-          data-testid="product-detail-link"
           className="link_product_card"
         >
           <img
@@ -83,12 +81,8 @@ export default class Product extends Component {
             </div>
             { shipping.free_shipping && (
               <section className="shipp-details">
-                <p
-                  data-testid="free-shipping"
-                  className="free-shipping"
-                >
+                <p className="free-shipping">
                   Frete Grátis
-
                 </p>
               </section>
             ) }
@@ -116,7 +110,6 @@ export default class Product extends Component {
               Comprar agora
             </Link>
             <button
-              data-testid="product-add-to-cart"
               type="button"
               onClick={ () => handleClick(product) }
             >

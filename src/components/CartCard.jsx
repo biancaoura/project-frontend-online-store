@@ -16,7 +16,6 @@ export default class CartCard extends Component {
           <section className="cartcard-remove-img">
             <button
               type="button"
-              data-testid="remove-product"
               onClick={ () => removeCartItem(item) }
             >
               <AiIcons.AiFillCloseSquare />
@@ -27,7 +26,7 @@ export default class CartCard extends Component {
             />
           </section>
           <section className="cartcard-details">
-            <h3 data-testid="shopping-cart-product-name">{ title }</h3>
+            <h3>{ title }</h3>
             {item.original_price !== null
               ? (
                 <span
@@ -42,16 +41,14 @@ export default class CartCard extends Component {
             <div className="add-remove-item">
               <button
                 type="button"
-                data-testid="product-decrease-quantity"
                 onClick={ () => handleDecrease(item) }
                 disabled={ quantity < 2 }
               >
                 <AiIcons.AiOutlineMinus />
               </button>
-              <span data-testid="shopping-cart-product-quantity">{quantity}</span>
+              <span>{quantity}</span>
               <button
                 type="button"
-                data-testid="product-increase-quantity"
                 onClick={ () => handleIncrease(item) }
                 disabled={ quantity === item.available_quantity }
               >

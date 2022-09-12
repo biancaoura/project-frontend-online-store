@@ -44,7 +44,6 @@ export default class Rating extends Component {
               placeholder="Email"
               name="email"
               value={ email }
-              data-testid="product-detail-email"
               onChange={ (event) => handleChange(event) }
             />
             <textarea
@@ -53,19 +52,17 @@ export default class Rating extends Component {
               cols="30"
               rows="5"
               placeholder="Mensagem(opcional)"
-              data-testid="product-detail-evaluation"
               className="textarea-evaluation"
               onChange={ (event) => handleChange(event) }
             />
             <button
               type="submit"
-              data-testid="submit-review-btn"
               className="submit-btn"
               onClick={ (event) => handleClick(event) }
             >
               Avaliar
             </button>
-            {invalid && <p data-testid="error-msg">Campos inválidos</p>}
+            {invalid && <p>Campos inválidos</p>}
           </section>
         </form>
         <section className="evaluations">

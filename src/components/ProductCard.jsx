@@ -55,7 +55,6 @@ export default class ProductCard extends Component {
       const { match: { params: { id } } } = this.props;
       const response = await getProductById(id);
       const reviews = getRatings(id);
-      console.log(response.domain_id);
       const ratingsAVG = reviews
         .reduce((acc, { rating }) => (acc + rating), 0) / reviews.length;
       this.setState({
@@ -196,10 +195,9 @@ export default class ProductCard extends Component {
           </div>
           <Link
             to="/cart/:id"
-            data-testid="shopping-cart-button"
             className="cart-link"
           >
-            <div className="cart-size" data-testid="shopping-cart-size">
+            <div className="cart-size">
               { savedCart.length > 9 ? '9+' : savedCart.length }
             </div>
             <BsIcons.BsCart3 className="cart-icon" fill="white" />
@@ -233,7 +231,6 @@ export default class ProductCard extends Component {
                        <img
                          src={ thumbnailHD }
                          alt={ title }
-                         data-testid="product-detail-image"
                        />
                      </figure>
                      <section className="details-card-pdt">
@@ -241,7 +238,6 @@ export default class ProductCard extends Component {
                          <span>{`${condition} | ${product.sold_quantity} vendidos`}</span>
                          <h3
                            className="product-name"
-                           data-testid="product-detail-name"
                          >
                            {title}
                          </h3>
@@ -268,10 +264,7 @@ export default class ProductCard extends Component {
                            }
                            <div className="price-main">
                              <span className="price">R$</span>
-                             <span
-                               data-testid="product-detail-price"
-                               className="price"
-                             >
+                             <span className="price">
                                {`${priceWithCommas}`}
                              </span>
                            </div>
@@ -378,7 +371,6 @@ export default class ProductCard extends Component {
                            <span>Comprar agora</span>
                          </Link>
                          <button
-                           data-testid="product-add-to-cart"
                            type="button"
                            onClick={ () => this.handleClick(product) }
                            disabled={ isDisabled }

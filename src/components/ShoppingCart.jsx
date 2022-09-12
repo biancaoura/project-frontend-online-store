@@ -24,13 +24,7 @@ export default class ShoppingCart extends Component {
       .sort((a, b) => a.title.localeCompare(b.title))
       .filter((item, index, array) => index === array
         .findIndex((obj) => obj.id === item.id));
-    console.log(cartItems
-      .sort((a, b) => a.title.localeCompare(b.title)));
-    // Solução com o fetch, não deve ser usada até que complete 100%
-    // const testFilter = [...new Set(cartItems
-    //   .reduce((acc, { id }) => [...acc, id], []))];
-    // const filter = Promise.all(testFilter
-    //   .map((id) => getProductById(id))).then((values) => values);
+
     this.setState({ cart: cartItems }, () => {
       this.setState({ cartFiltered: cartfilterSmall });
     });
@@ -156,12 +150,8 @@ export default class ShoppingCart extends Component {
                       && 'Nem todos os produtos possuem frete grátis'}
                 </div>
                 <div className="checkout-button">
-                  <Link
-                    to="/checkout"
-                    data-testid="checkout-products"
-                  >
+                  <Link to="/checkout">
                     Finalizar compra
-
                   </Link>
                 </div>
               </div>

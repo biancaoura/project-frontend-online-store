@@ -65,7 +65,6 @@ export default class Checkout extends Component {
             name="name"
             value={ name }
             onChange={ handleChange }
-            data-testid="checkout-fullname"
           />
           <input
             type="text"
@@ -73,7 +72,6 @@ export default class Checkout extends Component {
             name="email"
             value={ email }
             onChange={ handleChange }
-            data-testid="checkout-email"
           />
           <input
             type="text"
@@ -81,7 +79,6 @@ export default class Checkout extends Component {
             name="cpf"
             value={ cpf }
             onChange={ handleChange }
-            data-testid="checkout-cpf"
           />
           <input
             type="text"
@@ -89,7 +86,6 @@ export default class Checkout extends Component {
             name="phone"
             value={ phone }
             onChange={ handleChange }
-            data-testid="checkout-phone"
           />
           <input
             type="text"
@@ -97,7 +93,6 @@ export default class Checkout extends Component {
             name="cep"
             value={ cep }
             onChange={ handleChange }
-            data-testid="checkout-cep"
           />
           <input
             type="text"
@@ -105,7 +100,6 @@ export default class Checkout extends Component {
             name="address"
             value={ address }
             onChange={ handleChange }
-            data-testid="checkout-address"
           />
           <div>
             <input
@@ -113,37 +107,32 @@ export default class Checkout extends Component {
               name="payment"
               checked={ checked }
               onChange={ handleChange }
-              data-testid="ticket-payment"
             />
             <input
               type="radio"
               name="payment"
               checked={ checked }
               onChange={ handleChange }
-              data-testid="visa-payment"
             />
             <input
               type="radio"
               name="payment"
               checked={ checked }
               onChange={ handleChange }
-              data-testid="master-payment"
             />
             <input
               type="radio"
               name="payment"
               checked={ checked }
               onChange={ handleChange }
-              data-testid="elo-payment"
             />
           </div>
           {
-            !isValid && <p data-testid="error-msg">Campos inválidos</p>
+            !isValid && <p>Campos inválidos</p>
           }
           <button
             type="submit"
             onClick={ handleClick }
-            data-testid="checkout-btn"
           >
             Comprar
           </button>
