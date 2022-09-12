@@ -10,8 +10,8 @@ body, html {
 .cart-page {
   align-items: center;
   display: flex;
-  min-height: 500px;
   justify-content: center;
+  min-height: 500px;
 }
 
 .header-cart {
@@ -19,34 +19,38 @@ body, html {
   align-items: center;
   background-color: rgb(48, 48, 46);
   display: flex;
-  justify-content: center;
   height: 100px;
+  justify-content: center;
   margin-bottom: 3em;
   padding-top: 2em;
 }
 
 .header-cart .title-container-cart {
   align-items: center;
-  color: #fff;
+  color: white;
   display: flex;
-  gap: 1em;
   font-size: 24px;
+  gap: 1em;
   left: 29px;
   position: absolute;
   top: 0;
 }
 
+.checkout span {
+  font-size: 20px;
+}
+
 .back-home {
   align-self: flex-end;
-  color: #fff;
+  color: white;
   font-size: 30px;
-  right: 30px;
   position: absolute;
+  right: 30px;
   top: 28px;
 }
 
 .back-home svg {
-  color: #fff;
+  color: white;
 }
 
 .back-home a {
@@ -57,16 +61,16 @@ body, html {
 }
 
 .back-home a span {
-  color: #fff;
+  color: white;
   font-size: 20px;
 }
 
 .cart {
   align-items: center;
-  background-color: #fff;
+  background-color: white;
   border-radius: 5px;
-  box-sizing: border-box;
   box-shadow: 0 2px 0 2px rgb(0, 0, 0 / 33%);
+  box-sizing: border-box;
   display: flex;
   margin-bottom: 2em;
   min-height: 400px;
@@ -99,13 +103,11 @@ body, html {
 
 .checkout h2 {
   font-size: 30px;
-  font-family: 'Proxima Nova', sans-serif;
 }
 
 .checkout .total-price-cart {
   color: rgb(0, 0, 0 / 33%);
   font-size: 20px;
-  font-family: "Proxima Nova", sans-serif;
 }
 
 .checkout .off-price {
@@ -118,18 +120,14 @@ body, html {
   font-size: 12px;
 }
 
-.checkout span {
-  font-size: 20px;
-}
-
 .checkout-button a {
   background-color: #3483fa;
-  border-radius: 8px;;
-  color: #fff;
+  border-radius: 8px;
+  color: white;
   margin-top: 1em;
-  text-decoration: none;
   padding: 15px;
   position: relative;
+  text-decoration: none;
   top: 30px;
 }
 

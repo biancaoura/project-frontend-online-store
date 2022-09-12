@@ -8,12 +8,12 @@
 
 .more-info {
   align-items: center;
-  background-color: #fff;
+  background-color: white;
   border-color: #e6e6e6;
   border-top-left-radius: 7px;
   border-top-right-radius: 7px;
-  box-sizing: border-box;
   box-shadow: 0 0 6px 1px rgb(0 0 0 / 33%);
+  box-sizing: border-box;
   cursor: pointer;
   justify-content: center;
 }
@@ -31,7 +31,7 @@
 .contact {
   align-content: center;
   align-items: flex-start;
-  background-color: #fff;
+  background-color: white;
   display: flex;
   justify-content: flex-end;
   padding: 1em;
@@ -76,7 +76,7 @@
   font-weight: 400;
 }
 
-.contact ul li a span:hover {
+.contact ul li span:hover {
   color: #3483fa;
 }
 
@@ -86,15 +86,15 @@
 
 .footer {
   align-items: center;
-  background-color: #fff;
+  background-color: white;
   border-color: #e6e6e6;
   border-top: 1px solid #e6e6e6;
   bottom: 0;
   box-sizing: border-box;
   display: flex;
   gap: 0.6em;
-  justify-content: center;
   height: 70px;
+  justify-content: center;
   padding: 1em;
   width: 1440px;
 }

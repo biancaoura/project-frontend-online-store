@@ -4,14 +4,16 @@
 }
 
 .loading svg {
-  font-size: 70px;
   animation: rotate 1s linear infinite;
+  font-size: 70px;
 }
 
 @keyframes rotate {
+
   from {
     transform: rotate(0);
   }
+
   to {
     transform: rotate(360deg);
   }

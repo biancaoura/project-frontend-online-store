@@ -28,8 +28,8 @@
   display: flex;
   flex-flow: column;
   font-size: 15px;
-  gap: 1em;
   font-weight: 300;
+  gap: 1em;
   word-wrap: break-word;
 }
 
@@ -46,6 +46,11 @@
   font-size: 20px;
 }
 
+.add-remove-item svg {
+  color: black;
+  cursor: pointer;
+}
+
 .add-remove-item button:enabled svg {
   color: #00a650;
 }
@@ -54,15 +59,10 @@
   color: rgba(255, 4, 4, 0.917);
 }
 
-.add-remove-item svg {
-  color: black;
-  cursor: pointer;
-}
-
 .original_price {
   color: rgba(0, 0, 0, 0.524);
   font-size: 12px;
   text-decoration: line-through;
 }
 
-.cartcard-items:hover .cartcard-remove-img button {display: block;}
+.cartcard-items:hover .cartcard-remove-img button { display: block;}

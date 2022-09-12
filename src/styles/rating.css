@@ -4,10 +4,10 @@
 
 .rating {
   align-items: center;
-  background-color: #fff;
+  background-color: white;
   border-radius: 5px;
-  box-sizing: border-box;
   box-shadow: 0 1px 0 1px rgb(0 0 0 / 33%);
+  box-sizing: border-box;
   display: flex;
   justify-content: space-around;
   margin: 3em 0;
@@ -35,17 +35,15 @@
 
 .rating-form-inner {
   display: flex;
-  gap: 0.8em;
   flex-flow: column;
+  gap: 0.8em;
 }
 
 .rating-form-inner input {
-  font-family: "Proxima Nova", sans-serif;
   padding: 0.5em;
 }
 
 .rating-form-inner textarea {
-  font-family: "Proxima Nova", sans-serif;
   padding: 1em;
 }
 
@@ -55,7 +53,7 @@
   border: transparent;
   border-radius: 6px;
   box-shadow: 0 0 0 1px rgb(0 0 0 / 33%);
-  color: #fff;
+  color: white;
   cursor: pointer;
   font-size: 16px;
   padding: 0.5em;
@@ -71,8 +69,8 @@
 }
 
 .evaluations {
-  padding: 16px;
   margin-bottom: 1.8em;
+  padding: 16px;
   width: 550px;
 }
 
@@ -106,13 +104,13 @@
 
 .side {
   float: left;
-  width: 80px;
   margin-top: 10px;
+  width: 80px;
 }
 
 .middle {
-  margin-top:10px;
   float: left;
+  margin-top: 10px;
   width: 70%;
 }
 
@@ -122,38 +120,44 @@
 }
 
 .row:after {
-  content: "";
-  display: table;
   clear: both;
+  content: '';
+  display: table;
 }
 
 .bar-container {
-  width: 100%;
   background-color: #f1f1f1;
-  text-align: center;
   color: white;
+  text-align: center;
+  width: 100%;
 }
 
-.bar-5 {
+.bar-5 { background-color: #00358a;
   border-radius: 6px;
-  height: 8px; background-color: #00358a;}
-.bar-4 {
-  border-radius: 6px;
-  height: 8px; background-color: #00358a;}
-.bar-3 {
-  border-radius: 6px;
-  height: 8px; background-color: #00358a;}
-.bar-2 {
-  border-radius: 6px;
-  height: 8px; background-color: #00358a;}
-.bar-1 {
-  border-radius: 6px;
-  height: 8px; background-color: #00358a;}
+  height: 8px;}
 
-@media (max-width: 400px) {
+.bar-4 { background-color: #00358a;
+  border-radius: 6px;
+  height: 8px;}
+
+.bar-3 { background-color: #00358a;
+  border-radius: 6px;
+  height: 8px;}
+
+.bar-2 { background-color: #00358a;
+  border-radius: 6px;
+  height: 8px;}
+
+.bar-1 { background-color: #00358a;
+  border-radius: 6px;
+  height: 8px;}
+
+@media ( max-width : 400px ) {
+
   .side, .middle {
     width: 100%;
   }
+
   .right {
     display: none;
   }
