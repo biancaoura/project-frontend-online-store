@@ -1,11 +1,8 @@
-/* eslint-disable import/prefer-default-export */
 import React from 'react';
 import * as BsIcons from 'react-icons/bs';
 import * as SiIcons from 'react-icons/si';
 import * as MdIcons from 'react-icons/md';
 import * as RiIcons from 'react-icons/ri';
-// import * as BsIcons from 'react-icons';
-// import * as BsIcons from 'react-icons';
 
 const classname = 'brands-icons';
 const catego = 'Celular';
